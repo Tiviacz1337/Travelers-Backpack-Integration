@@ -13,5 +13,13 @@ public class ConfigHandler
         @Config.Name("Tough As Nails")
         @Config.Comment("Whether or not to load the Tough As Nails integration.")
         public boolean loadTAN = true;
+
+        @Config.Name("Simple Difficulty")
+        @Config.Comment("Whether or not to load the Simple Difficulty integration.")
+        public boolean loadSD = true;
+
+        @Config.Name("Gravestone mod - Graves")
+        @Config.Comment("Whether or not to load the Gravestone mod - Graves integration.")
+        public boolean loadGMG = true;
     }
 }

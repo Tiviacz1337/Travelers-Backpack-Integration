@@ -49,7 +49,9 @@ dependencies {
     minecraft 'net.minecraftforge:forge:' + "${minecraft_version}" + '-' + "${forge_version}"
 
     compile "curse.maven:tough-as-nails:2710969";
-    compile "curse.maven:travelers-backpack:2993111";
+    compile "curse.maven:travelers-backpack:3040858";
+    compile "curse.maven:simpledifficulty:2877165";
+    compile "curse.maven:gravestone-mod-graves:2634989";
 
 }
 

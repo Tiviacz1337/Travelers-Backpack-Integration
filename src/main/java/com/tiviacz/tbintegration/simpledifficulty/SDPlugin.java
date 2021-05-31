@@ -1,4 +1,4 @@
-package com.tiviacz.tbintegration.tan;
+package com.tiviacz.tbintegration.simpledifficulty;
 
 import com.tiviacz.tbintegration.TBIntegration;
 import com.tiviacz.travelersbackpack.api.integration.ITBPlugin;
@@ -6,18 +6,18 @@ import com.tiviacz.travelersbackpack.api.integration.TBPlugin;
 import net.minecraftforge.fml.common.Loader;
 
 @TBPlugin
-public class TANPlugin implements ITBPlugin
+public class SDPlugin implements ITBPlugin
 {
     @Override
     public String getModName()
     {
-        return "Tough As Nails";
+        return "Simple Difficulty";
     }
 
     @Override
     public boolean canLoad()
     {
-        return Loader.isModLoaded("toughasnails") && TBIntegration.loadTAN;
+        return Loader.isModLoaded("simpledifficulty") && TBIntegration.loadSD;
     }
 
     @Override
@@ -26,9 +26,8 @@ public class TANPlugin implements ITBPlugin
     @Override
     public void init()
     {
-        TANPurifiedWaterEffect.registerEffect();
-        TANWaterEffect.registerEffect();
-        TANPurifiedWaterInventoryRecipes.registerRecipes();
+        SDPurifiedWaterEffect.registerEffect();
+        SDPurifiedWaterInventoryRecipes.registerRecipes();
     }
 
     @Override

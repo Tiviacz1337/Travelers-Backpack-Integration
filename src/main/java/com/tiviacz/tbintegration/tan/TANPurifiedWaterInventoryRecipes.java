@@ -6,24 +6,23 @@ import net.minecraft.init.SoundEvents;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.fluids.FluidRegistry;
 import toughasnails.api.item.TANItems;
-import toughasnails.fluids.PurifiedWaterFluid;
 
-public class PurifiedWaterInventoryRecipes
+public class TANPurifiedWaterInventoryRecipes
 {
-    public static PurifiedWaterInventoryRecipeIn RECIPE_IN;
-    public static PurifiedWaterInventoryRecipeOut RECIPE_OUT;
+    public static TANPurifiedWaterInventoryRecipeIn RECIPE_IN;
+    public static TANPurifiedWaterInventoryRecipeOut RECIPE_OUT;
 
     public static void registerRecipes()
     {
-        RECIPE_IN = new PurifiedWaterInventoryRecipeIn();
-        RECIPE_OUT = new PurifiedWaterInventoryRecipeOut();
+        RECIPE_IN = new TANPurifiedWaterInventoryRecipeIn();
+        RECIPE_OUT = new TANPurifiedWaterInventoryRecipeOut();
     }
 
-    public static class PurifiedWaterInventoryRecipeIn extends InventoryRecipe
+    public static class TANPurifiedWaterInventoryRecipeIn extends InventoryRecipe
     {
-        public PurifiedWaterInventoryRecipeIn()
+        public TANPurifiedWaterInventoryRecipeIn()
         {
-            super(TANItems.purified_water_bottle, PurifiedWaterFluid.instance, 250, Items.GLASS_BOTTLE);
+            super(TANItems.purified_water_bottle, FluidRegistry.getFluid("purified_water"), 100, Items.GLASS_BOTTLE);
         }
 
         @Override
@@ -39,11 +38,11 @@ public class PurifiedWaterInventoryRecipes
         }
     }
 
-    public static class PurifiedWaterInventoryRecipeOut extends InventoryRecipe
+    public static class TANPurifiedWaterInventoryRecipeOut extends InventoryRecipe
     {
-        public PurifiedWaterInventoryRecipeOut()
+        public TANPurifiedWaterInventoryRecipeOut()
         {
-            super(Items.GLASS_BOTTLE, PurifiedWaterFluid.instance, -250, TANItems.purified_water_bottle);
+            super(Items.GLASS_BOTTLE, FluidRegistry.getFluid("purified_water"), -250, TANItems.purified_water_bottle);
         }
 
         @Override

@@ -5,6 +5,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import toughasnails.api.TANPotions;
 import toughasnails.api.config.GameplayOption;
@@ -12,15 +13,14 @@ import toughasnails.api.config.SyncedConfig;
 import toughasnails.api.stat.capability.IThirst;
 import toughasnails.api.thirst.ThirstHelper;
 import toughasnails.api.thirst.WaterType;
-import toughasnails.thirst.ThirstHandler;
 
-public class PurifiedWaterEffect extends FluidEffect
+public class TANWaterEffect extends FluidEffect
 {
-    public static PurifiedWaterEffect PURIFIED_WATER_EFFECT;
+    public static TANWaterEffect WATER_EFFECT;
 
-    public PurifiedWaterEffect()
+    public TANWaterEffect()
     {
-        super("purified_water", 250);
+        super(FluidRegistry.WATER, 250);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class PurifiedWaterEffect extends FluidEffect
             EntityPlayer player = (EntityPlayer)entity;
 
             IThirst thirst = ThirstHelper.getThirstData(player);
-            WaterType type = WaterType.PURIFIED;
+            WaterType type = WaterType.NORMAL;
             thirst.addStats(type.getThirst(), type.getHydration());
             addEffects(player, type);
         }
@@ -48,17 +48,11 @@ public class PurifiedWaterEffect extends FluidEffect
     @Override
     public boolean canExecuteEffect(FluidStack fluidStack, World world, Entity entity)
     {
-        if(entity instanceof EntityPlayer)
-        {
-            ThirstHandler thirstHandler = (ThirstHandler)ThirstHelper.getThirstData((EntityPlayer)entity);
-
-            return thirstHandler.isThirsty();
-        }
-        return false;
+        return fluidStack.amount >= this.amountRequired;
     }
 
     public static void registerEffect()
     {
-        PURIFIED_WATER_EFFECT = new PurifiedWaterEffect();
+        WATER_EFFECT = new TANWaterEffect();
     }
 }
